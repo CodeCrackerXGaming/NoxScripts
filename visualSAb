@@ -1,0 +1,48 @@
+-- Create ScreenGui
+local player = game.Players.LocalPlayer
+local gui = Instance.new("ScreenGui")
+gui.Parent = player:WaitForChild("PlayerGui")
+
+-- Main frame
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(0,150,0,120)
+frame.Position = UDim2.new(0.5,-75,0.5,-60)
+frame.BackgroundColor3 = Color3.fromRGB(40,40,40)
+frame.Active = true
+frame.Draggable = true
+frame.Parent = gui
+
+Instance.new("UICorner", frame)
+
+-- Button creator
+local function createButton(name, posY)
+    local button = Instance.new("TextButton")
+    button.Size = UDim2.new(0,130,0,30)
+    button.Position = UDim2.new(0,10,0,posY)
+    button.Text = name
+    button.BackgroundColor3 = Color3.fromRGB(60,60,60)
+    button.TextColor3 = Color3.new(1,1,1)
+    button.Parent = frame
+    
+    Instance.new("UICorner", button)
+    
+    return button
+end
+
+-- Buttons
+local freezeTrade = createButton("Freeze Trade", 10)
+local forceAccept = createButton("Force Accept", 45)
+local putBrainrot = createButton("Put All Brainrot", 80)
+
+-- Button actions
+freezeTrade.MouseButton1Click:Connect(function()
+    print("Freeze Trade clicked")
+end)
+
+forceAccept.MouseButton1Click:Connect(function()
+    print("Force Accept clicked")
+end)
+
+putBrainrot.MouseButton1Click:Connect(function()
+    print("Put All Brainrot clicked")
+end)
